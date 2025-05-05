@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="stock_picking_tree_view_inherit_prac" model="ir.ui.view">
+        <field name="name">stock.picking.tree.inherit.prac</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" optional="hide"
+                       column_invisible="not (context.get('restricted_picking_type_code') == 'outgoing' or context.get('open_from_so'))"/>
+            </xpath>
+            <xpath expr="//field[@name='origin']" position="attributes">
+                <attribute name="widget">copyable_char</attribute>
+                <attribute name="readonly">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="stock_picking_form_view_inherit_prac" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.prac</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='picking_type_id']" position="after">
+                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"
+                       invisible="picking_type_code != 'outgoing' or not tag_ids"/>
+            </xpath>
+            <xpath expr="//field[@name='origin']" position="attributes">
+                <attribute name="widget">copyable_char</attribute>
+                <attribute name="readonly">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_picking_search_inherit_prac" model="ir.ui.view">
+        <field name="name">stock.picking.search.inherit.prac</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="tag_ids"/>
+            </field>
+        </field>
+    </record>
+</odoo>

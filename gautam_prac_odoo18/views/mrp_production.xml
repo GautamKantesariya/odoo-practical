@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="mrp_production_form_view_inherited_prac" model="ir.ui.view">
+        <field name="name">mrp.production.view.inherited.prac</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='%(mrp.action_change_production_qty)d']" position="before">
+                <field name="product_qty" class="oe_inline text-start text-truncate"
+                       invisible="not (state == 'confirmed' and is_created_from_so==True)" readonly="1"
+                       style="width:auto!important"/>
+            </xpath>
+            <xpath expr="//button[@name='%(mrp.action_change_production_qty)d']" position="attributes">
+                <attribute name="invisible">state in ('draft', 'done', 'cancel') or not id or (state == 'confirmed' and is_created_from_so==True)
+                </attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

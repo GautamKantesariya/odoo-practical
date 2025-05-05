@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="gautam_prac_odoo18.CharCopyClipboard">
+        <div class="o_field_with_copy d-flex align-items-center gap-1">
+            <BaseChar t-props="charProps" />
+            <Copier
+                content="textToCopy"
+                className="'btn btn-light border'"
+                icon="'fa fa-clipboard'"
+                successText="'Copied!'"
+            />
+        </div>
+    </t>
+</templates>

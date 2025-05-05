@@ -1,0 +1,25 @@
+.o_field_char_copy_clipboard {
+    > div {
+        display: grid;
+        grid-template-columns: auto min-content;
+
+        .o_clipboard_button {
+            border: none;
+        }
+
+        > span:first-child,
+        a {
+            margin-left: 1px;
+            margin-right: 1px;
+            align-self: center;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+
+    &.o_readonly_modifier > div {
+        border: 1px solid #636363;
+    }
+}
