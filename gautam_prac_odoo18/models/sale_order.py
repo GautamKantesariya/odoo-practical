@@ -16,4 +16,3 @@ class SaleOrder(models.Model):
             action.setdefault('context', {})
             action['context']['open_from_so'] = True
         return action
-
